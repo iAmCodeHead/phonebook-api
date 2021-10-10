@@ -1,7 +1,7 @@
-import { Phonebook } from "../entities/phonebook.entity";
+import { PhonebookDto } from "./phonebook.dto";
 
 export class PaginatedPhonebookResultDto {
-    data: Phonebook[];
+    data: PhonebookDto[];
     page: number;
     limit: number;
     totalCount: number;

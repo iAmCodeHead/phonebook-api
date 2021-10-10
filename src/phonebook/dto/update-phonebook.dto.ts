@@ -1,6 +1,8 @@
+import { PartialType } from "@nestjs/swagger";
 import { IsUUID } from "class-validator";
+import { CreatePhonebookDto } from "./create-phonebook.dto";
 
-export class UpdatePhonebookDto {
+export class UpdatePhonebookDto extends PartialType(CreatePhonebookDto) {
     name?: string;
     phone_number?: string;
     address?: string;

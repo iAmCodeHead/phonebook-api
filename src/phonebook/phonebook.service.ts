@@ -1,5 +1,5 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import ErrorMessages from 'src/utils/error.message';
+import { ErrorMessages } from 'src/utils/error.message';
 import { CreatePhonebookDto } from './dto/create-phonebook.dto';
 import { PaginatedPhonebookResultDto } from './dto/get-phonebook.dto';
 import { PaginateDto } from './dto/paginate.dto';
@@ -11,10 +11,7 @@ import { PhonebookRepository } from './phonebook.repository';
 export class PhonebookService {
   
 
-  constructor(
-    private phonebookRepository: PhonebookRepository,
-    private errorMessages: ErrorMessages
-    ){ }
+  constructor(private phonebookRepository: PhonebookRepository){}
 
   async create(createPhonebookDto: CreatePhonebookDto): Promise<IPhonebook> {
 
@@ -44,7 +41,7 @@ export class PhonebookService {
 
     if(!found) {
 
-        throw new NotFoundException(this.errorMessages.isNotFound('Contact'));
+        throw new NotFoundException(ErrorMessages.isNotFound('Contact'));
 
     }
 
@@ -68,7 +65,7 @@ export class PhonebookService {
     
     if(result.affected === 0) {
 
-        throw new NotFoundException(this.errorMessages.isNotFound('Contact'));
+        throw new NotFoundException(ErrorMessages.isNotFound('Contact'));
 
     }
 

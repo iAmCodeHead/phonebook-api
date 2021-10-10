@@ -5,7 +5,10 @@ import { uuid, UpdatePhonebookDto } from './dto/update-phonebook.dto';
 import { IPhonebook } from './phonebook.model';
 import { PaginateDto } from './dto/paginate.dto';
 import { PaginatedPhonebookResultDto } from './dto/get-phonebook.dto';
+import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
+import { PhonebookDto } from './dto/phonebook.dto';
 
+@ApiTags()
 @Controller('phonebook')
 export class PhonebookController {
   constructor(private phonebookService: PhonebookService) {}
@@ -16,11 +19,19 @@ export class PhonebookController {
   }
 
   @Get()
+  @ApiOkResponse({
+    description: 'All Contacts successfully found.',
+    type: PaginatedPhonebookResultDto,
+  })
   findAll(@Query() paginationDto?: PaginateDto): Promise<PaginatedPhonebookResultDto> { 
     return this.phonebookService.findAll(paginationDto);
   }
 
   @Get(':id')
+  @ApiOkResponse({
+    description: 'Contact successfully found.',
+    type: PhonebookDto,
+  })
   findOne(@Param('id', ParseUUIDPipe) id) {
     return this.phonebookService.findOne(id);
   }
