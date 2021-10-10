@@ -7,9 +7,9 @@ A simple phonebook api using [Nest](https://github.com/nestjs/nest) framework.
 ## Features
 * Uses typescript
 * Basic Postgresql/TypeORM model setup
-* Global config
-* Cors enabled
-* TypeORM Migration
+* Global environment config
+* Cors enabling
+* [TypeORM](https://typeorm.io)
 * Request validation using [class-validator](https://www.npmjs.com/package/class-validator)
 
 ## **Getting Started**
@@ -71,5 +71,4 @@ $ npm run test
 
 ## **Documentation**
 Depends on what your port number is (port 5000 in this case)
-```
 http://localhost:5000/api```
